@@ -75,14 +75,14 @@ namespace CSGO_Config_Manager
             profilePaths.Clear();
             accountStrs.Clear();
 
-            if (!Directory.Exists(@"C:\Program Files (x86)\Steam"))
+            if (!File.Exists(Properties.Settings.Default.steamDir + @"\steam.exe"))
             {
                 tb_log.AppendText(Environment.NewLine + "ERROR: Steam was not found on your computer.", Color.Red);
                 DisableBoxes();
                 return;
             }
 
-            try { dirs = Directory.GetDirectories(@"C:\Program Files (x86)\Steam\userdata"); }
+            try { dirs = Directory.GetDirectories(Properties.Settings.Default.steamDir + @"\userdata"); }
             catch
             {
                 tb_log.AppendText(Environment.NewLine + "ERROR: There is no user data. Have you logged in?", Color.Red);
@@ -92,11 +92,11 @@ namespace CSGO_Config_Manager
 
             for (int i = 0; i < dirs.Length; i++)
             {
-                dirs[i] = dirs[i].Replace(@"C:\Program Files (x86)\Steam\userdata\", "");
+                dirs[i] = dirs[i].Replace(Properties.Settings.Default.steamDir + @"\userdata\", "");
                 if (dirs[i] != "anonymous")
                 {
                     steamIDs.Add(Convert.ToInt64(dirs[i]) + 76561197960265728);
-                    profilePaths.Add(@"C:\Program Files (x86)\Steam\userdata\" + dirs[i]);
+                    profilePaths.Add(Properties.Settings.Default.steamDir + @"\userdata\" + dirs[i]);
 
                     try
                     {
@@ -232,6 +232,23 @@ namespace CSGO_Config_Manager
             }
             DisableBoxes();
             EnableBoxes();
+        }
+
+        private void b_steamdir_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog steamDir = new FolderBrowserDialog();
+            steamDir.Description = "Locate the Steam Folder";
+            steamDir.SelectedPath = Properties.Settings.Default.steamDir;
+
+            if (steamDir.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.steamDir = steamDir.SelectedPath;
+                Properties.Settings.Default.Save();
+                tb_log.AppendText(Environment.NewLine + "Steam folder changed to " + Properties.Settings.Default.steamDir);
+
+                DisableBoxes();
+                CfgSearch();
+            }
         }
     }
 

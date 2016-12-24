@@ -38,13 +38,14 @@
             this.clb_copyto = new System.Windows.Forms.CheckedListBox();
             this.b_copy = new System.Windows.Forms.Button();
             this.b_open = new System.Windows.Forms.Button();
+            this.b_steamdir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cb_account
             // 
             this.cb_account.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_account.FormattingEnabled = true;
-            this.cb_account.Location = new System.Drawing.Point(13, 34);
+            this.cb_account.Location = new System.Drawing.Point(13, 39);
             this.cb_account.Name = "cb_account";
             this.cb_account.Size = new System.Drawing.Size(378, 21);
             this.cb_account.TabIndex = 1;
@@ -52,7 +53,7 @@
             // 
             // b_refresh
             // 
-            this.b_refresh.Location = new System.Drawing.Point(397, 33);
+            this.b_refresh.Location = new System.Drawing.Point(397, 38);
             this.b_refresh.Name = "b_refresh";
             this.b_refresh.Size = new System.Drawing.Size(75, 23);
             this.b_refresh.TabIndex = 2;
@@ -83,21 +84,21 @@
             // 
             // b_import
             // 
-            this.b_import.Location = new System.Drawing.Point(12, 61);
+            this.b_import.Location = new System.Drawing.Point(12, 66);
             this.b_import.Name = "b_import";
             this.b_import.Size = new System.Drawing.Size(75, 23);
             this.b_import.TabIndex = 5;
-            this.b_import.Text = "Import";
+            this.b_import.Text = "Import...";
             this.b_import.UseVisualStyleBackColor = true;
             this.b_import.Click += new System.EventHandler(this.b_import_Click);
             // 
             // b_export
             // 
-            this.b_export.Location = new System.Drawing.Point(316, 61);
+            this.b_export.Location = new System.Drawing.Point(316, 66);
             this.b_export.Name = "b_export";
             this.b_export.Size = new System.Drawing.Size(75, 23);
             this.b_export.TabIndex = 6;
-            this.b_export.Text = "Export";
+            this.b_export.Text = "Export...";
             this.b_export.UseVisualStyleBackColor = true;
             this.b_export.Click += new System.EventHandler(this.b_export_Click);
             // 
@@ -106,7 +107,7 @@
             this.clb_copyto.CheckOnClick = true;
             this.clb_copyto.FormattingEnabled = true;
             this.clb_copyto.Location = new System.Drawing.Point(12, 199);
-            this.clb_copyto.Name = "cbl_copyto";
+            this.clb_copyto.Name = "clb_copyto";
             this.clb_copyto.Size = new System.Drawing.Size(379, 64);
             this.clb_copyto.TabIndex = 7;
             this.clb_copyto.SelectedIndexChanged += new System.EventHandler(this.cbl_copyto_SelectedIndexChanged);
@@ -123,7 +124,7 @@
             // 
             // b_open
             // 
-            this.b_open.Location = new System.Drawing.Point(167, 61);
+            this.b_open.Location = new System.Drawing.Point(167, 66);
             this.b_open.Name = "b_open";
             this.b_open.Size = new System.Drawing.Size(75, 23);
             this.b_open.TabIndex = 9;
@@ -131,11 +132,22 @@
             this.b_open.UseVisualStyleBackColor = true;
             this.b_open.Click += new System.EventHandler(this.b_open_Click);
             // 
+            // b_steamdir
+            // 
+            this.b_steamdir.Location = new System.Drawing.Point(257, 10);
+            this.b_steamdir.Name = "b_steamdir";
+            this.b_steamdir.Size = new System.Drawing.Size(134, 23);
+            this.b_steamdir.TabIndex = 10;
+            this.b_steamdir.Text = "Set Steam Directory...";
+            this.b_steamdir.UseVisualStyleBackColor = true;
+            this.b_steamdir.Click += new System.EventHandler(this.b_steamdir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 361);
+            this.Controls.Add(this.b_steamdir);
             this.Controls.Add(this.b_open);
             this.Controls.Add(this.b_copy);
             this.Controls.Add(this.clb_copyto);
@@ -167,6 +179,7 @@
         private System.Windows.Forms.CheckedListBox clb_copyto;
         private System.Windows.Forms.Button b_copy;
         private System.Windows.Forms.Button b_open;
+        private System.Windows.Forms.Button b_steamdir;
     }
 }
 
